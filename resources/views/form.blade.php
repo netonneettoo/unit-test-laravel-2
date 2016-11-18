@@ -93,12 +93,12 @@
             evt.preventDefault();
             $.post('/form', $(evt.target).serialize(), function(data) {
                 var result = $('.result');
-                if (data[1]) {
+                if (data.success) {
                     result.parent('.alert').removeClass('alert-warning', 'alert-danger').addClass('alert-success');
                 } else {
                     result.parent('.alert').removeClass('alert-warning', 'alert-success').addClass('alert-danger');
                 }
-                result.text(data[0]);
+                result.text(data.result);
             });
         });
     </script>

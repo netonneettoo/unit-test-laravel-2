@@ -21,11 +21,16 @@ class UnitTestLaravel
                 $nameColors = self::ENDS_WITH_LETTER[$name[$countLetters-1]];
                 $colorInArray = in_array($color, $nameColors);
                 if (! $colorInArray) {
-                    return [$name.' não combina com '.$color, false];
+                    return [
+                        'result' => $name.' não combina com '.$color,
+                        'success' => false
+                    ];
                 }
             }
         }
-
-        return [$name.' combina com '.$color, true];
+        return [
+            'result' => $name.' combina com '.$color,
+            'success' => true
+        ];
     }
 }
