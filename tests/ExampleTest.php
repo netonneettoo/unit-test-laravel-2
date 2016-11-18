@@ -7,6 +7,8 @@ use \App\Domain\UnitTestLaravel;
 
 class ExampleTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A basic functional test example.
      *
@@ -49,5 +51,40 @@ class ExampleTest extends TestCase
                 'result' => $result,
                 'success' => true
             ]);
+    }
+
+    /**
+     * @test
+     */
+    public function checkNameAndColor3()
+    {
+        $name = 'pedro';
+        $color = 'green';
+        $result = $name.' combina com '.$color;
+
+        $this
+            ->visit('/form')
+            ->type($name, 'name')
+            ->select($color, 'color')
+            ->press('Enviar')
+            ->see($result);
+    }
+
+    /**
+     * @test
+     */
+    public function anotherTest()
+    {
+        $user = factory(\App\User::class)->create();
+      //  dd(
+
+            $this
+                ->actingAs($user)
+                ->visit('/home')
+//                ->response
+//                ->getContent()
+
+     //   )
+        ;
     }
 }
